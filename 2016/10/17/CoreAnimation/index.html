@@ -1,0 +1,441 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>《Core Animation》的点点滴滴 | Lee</title><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/4.2.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">《Core Animation》的点点滴滴</h1><a id="logo" href="/.">Lee</a><p class="description">人生不如意十之八九，而八九又是不离十！</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 文章</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">《Core Animation》的点点滴滴</h1><div class="post-meta">Oct 17, 2016<script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><div class="post-content"><p>&#x2003;&#x2003;CoreAnimation&#x6846;&#x67B6;&#x662F;&#x76F4;&#x63A5;&#x4F5C;&#x7528;&#x5728;CAlayer&#x4E0A;&#x7070;&#x5E38;&#x5F3A;&#x5927;&#x7684;OS X &#x548C;iOS&#x5E73;&#x53F0;&#x7684;&#x52A8;&#x753B;&#x5904;&#x7406;API&#xFF0C;CoreAnimation&#x7684;&#x52A8;&#x753B;&#x6267;&#x884C;&#x64CD;&#x4F5C;&#x5E76;&#x4E0D;&#x662F;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E0A;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x4F1A;&#x963B;&#x585E;&#x4E3B;&#x7EBF;&#x7A0B;&#x3002;CoreAnimation&#x5C06;&#x5927;&#x90E8;&#x5206;&#x5B9E;&#x9645;&#x7684;&#x7ED8;&#x56FE;&#x4EFB;&#x52A1;&#x4EA4;&#x7ED9;&#x4E86;GPU&#x6765;&#x5904;&#x7406;&#xFF0C;&#x82F9;&#x679C;&#x8FD9;&#x79CD;&#x6B7B;&#x78D5;&#x786C;&#x4EF6;&#x7684;&#x9AD8;&#x73A9;&#x771F;&#x662F;&#x6DF1;&#x6DF1;&#x5730;&#x6253;&#x52A8;&#x4E86;&#x5C0F;&#x5144;&#x5F1F;&#x3002;</p>
+<a id="more"></a>
+<h2 id="&#x7B2C;&#x4E00;&#x5173;"><a href="#&#x7B2C;&#x4E00;&#x5173;" class="headerlink" title="&#x7B2C;&#x4E00;&#x5173;"></a>&#x7B2C;&#x4E00;&#x5173;</h2><p>&#x2003;&#x2003;&#x6211;&#x8BA4;&#x4E3A;&#xFF0C;&#x5B66;&#x4E60;&#x82F9;&#x679C;&#x5F00;&#x53D1;&#x7684;&#x7B2C;&#x4E00;&#x624B;&#x8D44;&#x6599;&#x8FDC;&#x5728;&#x5929;&#x8FB9;&#xFF0C;&#x8FD1;&#x5728;&#x773C;&#x524D;&#xFF0D;&#xFF0D;&#x5C31;&#x662F;&#x82F9;&#x679C;&#x7684;&#x5B98;&#x65B9;&#x6587;&#x6863;&#xFF08;&#x524D;&#x63D0;&#x662F;English&#x8FC7;&#x5173;&#xFF09;&#x3002;&#x5F53;&#x7136;&#x5566;&#xFF0C;&#x5047;&#x5982;&#x4E0D;&#x8FC7;&#x5173;&#x6BD4;&#x5982;&#x8BF4;&#x6211;&#xFF0C;&#x4E5F;&#x4E0D;&#x662F;&#x5750;&#x4EE5;&#x5F85;&#x6BD9;&#x3002;&#x6211;&#x56FD;&#x8FD8;&#x662F;&#x6709;&#x5F88;&#x591A;&#x65E0;&#x79C1;&#x8D21;&#x732E;&#x4F18;&#x79C0;&#x7FFB;&#x8BD1;&#x7684;&#x5C0F;&#x4F19;&#x4F34;&#x5728;&#x505A;&#x4E00;&#x4E9B;&#x4E8B;&#x60C5;&#x3002;&#x53CB;&#x60C5;&#x63D0;&#x9192;&#xFF1A;&#x8FD8;&#x662F;&#x597D;&#x597D;&#x5B66;&#x597D;&#xFF1A;&#x8BED;&#x3001;&#x6570;&#x3001;&#x82F1;&#xFF01;&#xFF01;&#xFF01;<br>&#x8A00;&#x5F52;&#x6B63;&#x4F20;&#xFF1A;</p>
+<ul>
+<li><a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/CoreAnimation_guide/Introduction/Introduction.html" target="_blank" rel="external">&#x300A;Core Animation Programming Guide&#x300B;&#x5B98;&#x65B9;&#x6587;&#x6863; &#x2013; 2015.3.9</a></li>
+<li><a href="http://www.cnblogs.com/xdream86/p/3250782.html" target="_blank" rel="external">&#x300A;Core Animation Programming Guide&#x300B;&#x8BD1;&#x6587; &#x2013; 2013.1.28</a><br>&#x867D;&#x7136;&#x662F;&#x4E0A;&#x4E00;&#x4E2A;&#x7248;&#x672C;&#x7684;&#x7FFB;&#x8BD1;&#xFF0C;&#x4F46;&#x662F;&#x6838;&#x5FC3;&#x7684;&#x5185;&#x5BB9;&#x90FD;&#x6709;&#x4E86;&#xFF0C;&#x6700;&#x65B0;&#x7248;&#x7684;&#x589E;&#x52A0;&#x7684;&#x5185;&#x5BB9;&#x4E5F;&#x4E0D;&#x591A;&#x3002;</li>
+</ul>
+<h2 id="&#x7B2C;&#x4E8C;&#x5173;"><a href="#&#x7B2C;&#x4E8C;&#x5173;" class="headerlink" title="&#x7B2C;&#x4E8C;&#x5173;"></a>&#x7B2C;&#x4E8C;&#x5173;</h2><p>&#x2003;&#x2003;&#x8FD8;&#x662F;&#x6211;&#x8BA4;&#x4E3A;&#xFF0C;&#x82F9;&#x679C;&#x5F00;&#x53D1;&#x7684;&#x7B2C;&#x4E8C;&#x624B;&#x8D44;&#x6599;&#x65E0;&#x7591;&#x662F;&#xFF0D;&#xFF0D;&#x6253;&#x5F00;xCode&#xFF0C;&#x5BFC;&#x5165;&#x76F8;&#x5173;&#x7684;&#x6846;&#x67B6;&#x6BD4;&#x5982;&#xFF1A;&#x672C;&#x6587;&#x63A2;&#x8BA8;&#x7684;Core Animation&#x6846;&#x67B6;&#xFF0C;&#x70B9;&#x8FDB;&#x53BB;&#xFF0C;&#x4E00;&#x4E2A;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x4E00;&#x4E2A;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x4E00;&#x884C;&#x4E00;&#x884C;&#x4EE3;&#x7801;&#x5730;&#x770B;&#x3002;&#x82F9;&#x679C;&#x6709;&#x4E00;&#x70B9;&#x505A;&#x5F97;&#x975E;&#x5E38;&#x7684;&#x597D;&#xFF0C;&#x5C31;&#x662F;&#x57FA;&#x672C;&#x4E0A;&#x4F60;&#x770B;&#x5C5E;&#x6027;&#x540D;&#x3001;&#x65B9;&#x6CD5;&#x540D;&#x5C31;&#x80FD;&#x731C;&#x51FA;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x662F;&#x5E72;&#x561B;&#x7528;&#x7684;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x662F;&#x505A;&#x4EC0;&#x4E48;&#x7684;&#xFF0C;&#x66F4;&#x4F55;&#x51B5;&#x5728;&#x5173;&#x952E;&#x90E8;&#x5206;&#x8FD8;&#x4F1A;&#x6709;&#x6CE8;&#x91CA;&#x3002;</p>
+<h3 id="CAAnimation&#x7C7B;"><a href="#CAAnimation&#x7C7B;" class="headerlink" title="CAAnimation&#x7C7B;"></a>CAAnimation&#x7C7B;</h3><blockquote>
+<p><code>CAAnimation</code> &#x7C7B;&#x662F;animation&#x7684;&#x57FA;&#x7C7B;&#xFF0C;&#x5B9E;&#x73B0;&#x4E86;<code>NSCoding</code>&#x3001;<code>NSCopying</code>&#x7B49;&#x534F;&#x8BAE;&#x3002;&#x672C;&#x6587;&#x91CD;&#x70B9;&#x5173;&#x6CE8;&#x7684;&#x662F;<code>CAMediaTiming</code>&#x3001;<code>CAAction</code>&#x8FD9;&#x4E24;&#x4E2A;&#x534F;&#x8BAE;&#x3002;CAAnimation&#x540C;&#x65F6;&#x4E5F;&#x662F;Core Animation&#x6240;&#x6709;&#x52A8;&#x753B;&#x7C7B;&#x578B;&#x7684;&#x62BD;&#x8C61;&#x57FA;&#x7C7B;&#x3002;<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@interface <span class="type">CAAnimation</span>: <span class="type">NSObject</span> &lt;<span class="type">NSCoding</span>, <span class="type">NSCopying</span>, <span class="type">CAMediaTiming</span>, <span class="type">CAAction</span>&gt;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<ul>
+<li><p>CAAnimation&#x7684;&#x5C5E;&#x6027;:<br>  <em>timingFunction</em> : &#x52A8;&#x753B;&#x901F;&#x5EA6;&#x63A7;&#x5236;&#x7C7B;<code>CAMediaTimingFunction</code>&#x3002;  </p>
+<p>  <em>delegate</em> : <code>CAAnimationDelegate</code> &#x4EE3;&#x7406;&#x5C5E;&#x6027;,&#x4E3A;<code>CAAnimation</code>&#x8BBE;&#x7F6E;&#x4EE3;&#x7406;&#x3002;</p>
+<p>  <em>removedOnCompletion</em> : &#x52A8;&#x753B;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x540E;&#x5C31;&#x4ECE;&#x56FE;&#x5C42;&#x4E0A;&#x79FB;&#x9664;&#xFF0C;&#x89C6;&#x56FE;&#x4F1A;&#x6062;&#x590D;&#x5230;&#x52A8;&#x753B;&#x6267;&#x884C;&#x524D;&#x5230;&#x72B6;&#x6001;&#xFF0C;&#x5982;&#x679C;&#x60F3;&#x8BA9;&#x56FE;&#x5C42;&#x4FDD;&#x6301;&#x663E;&#x793A;&#x52A8;&#x753B;&#x6267;&#x884C;&#x540E;&#x5230;&#x72B6;&#x6001;&#xFF0C;&#x9700;&#x8981;&#x8BBE;&#x7F6E;&#x4E3A;NO&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x8BBE;&#x7F6E;<code>fillMode</code>&#x4E3A;<code>kCAFillModeForwards</code>  </p>
+</li>
+<li><p>CAAnimation&#x7684;&#x65B9;&#x6CD5;:<br>  &#x521B;&#x5EFA;&#x4E00;&#x4E2A;animation&#x5B9E;&#x4F8B;&#x7684;&#x7C7B;&#x65B9;&#x6CD5;:</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+ (instancetype)animation;</div></pre></td></tr></table></figure>
+<p>   &#x6839;&#x636E;&#x5C5E;&#x6027;key&#xFF0C;&#x8FD4;&#x56DE;&#x76F8;&#x5E94;&#x7684;&#x5C5E;&#x6027;&#x503C;&#x7684;&#x7C7B;&#x65B9;&#x6CD5;:</p>
+   <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+ (nullable id)defaultValueForKey:(<span class="type">NSString</span> *)key;</div></pre></td></tr></table></figure>
+<p>  &#x8FD4;&#x56DE;&#x6307;&#x5B9A;&#x7684;&#x5C5E;&#x6027;&#x503C;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x5F52;&#x6863;&#x7684;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;:</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="type">BOOL</span>)shouldArchiveValueForKey:(<span class="type">NSString</span> *)key;</div></pre></td></tr></table></figure>
+</li>
+<li><p>CAAnimation&#x7684;&#x4EE3;&#x7406;&#x65B9;&#x6CD5;:</p>
+<blockquote>
+<p><code>CAAnimation</code>&#x5728;&#x5206;&#x7C7B;&#x4E2D;&#x5B9A;&#x4E49;&#x4E86;&#x4EE3;&#x7406;&#x65B9;&#x6CD5;&#xFF0C;&#x5E76;&#x4E14;&#x662F;&#x58F0;&#x660E;&#x4E3A;NSObject&#x7684;&#x5206;&#x7C7B;&#xFF0C;&#x6240;&#x4EE5;&#x4EFB;&#x4F55;&#x5BF9;&#x8C61;&#x90FD;&#x53EF;&#x4EE5;&#x6210;&#x4E3A;CAAnimation&#x7684;&#x4EE3;&#x7406;&#x3002; </p>
+</blockquote>
+<p>  &#x52A8;&#x753B;&#x5F00;&#x59CB;&#x65F6;&#xFF0C;&#x6267;&#x884C;&#x7684;&#x65B9;&#x6CD5;:</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)animationDidStart:(<span class="type">CAAnimation</span> *)anim;</div></pre></td></tr></table></figure>
+<pre><code>anim : &#x6B63;&#x5728;&#x6267;&#x884C;&#x52A8;&#x753B;&#x7684;CAAnimation&#x5B9E;&#x4F8B;&#x3002;
+</code></pre><p>  &#x52A8;&#x753B;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x6216;&#x8005;&#x52A8;&#x753B;&#x4E3A;&#x6267;&#x884C;&#x88AB;&#x5220;&#x9664;&#x65F6;&#xFF0C;&#x6267;&#x884C;&#x8BE5;&#x65B9;&#x6CD5;:</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)animationDidStop:(<span class="type">CAAnimation</span> *)anim finished:(<span class="type">BOOL</span>)flag;</div></pre></td></tr></table></figure>
+<pre><code>anim : &#x5B8C;&#x6210;&#x6216;&#x8005;&#x88AB;&#x5220;&#x9664;&#x7684;&#x52A8;&#x753B;&#x5B9E;&#x4F8B;;
+flag : &#x6807;&#x5FD7;&#x8BE5;&#x52A8;&#x753B;&#x662F;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x6216;&#x8005;&#x88AB;&#x5220;&#x9664;, YES : &#x6267;&#x884C;&#x5B8C;&#x6210;&#xFF1B;NO : &#x88AB;&#x5220;&#x9664;&#x3002;
+</code></pre></li>
+</ul>
+<h3 id="CAMediaTiming&#x534F;&#x8BAE;"><a href="#CAMediaTiming&#x534F;&#x8BAE;" class="headerlink" title="CAMediaTiming&#x534F;&#x8BAE;"></a>CAMediaTiming&#x534F;&#x8BAE;</h3><blockquote>
+<p>CAMediaTiming &#x534F;&#x8BAE;&#x7531;layers&#x548C;animation&#x5B9E;&#x73B0;&#xFF0C;&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x5206;&#x5C42;&#x5B9A;&#x65F6;&#x7CFB;&#x7EDF;&#x7684;&#x6A21;&#x578B;&#x3002;&#x53EF;&#x4EE5;&#x8C03;&#x6574;&#x65F6;&#x95F4;,&#x5305;&#x62EC;&#x6301;&#x7EED;&#x65F6;&#x95F4;,&#x901F;&#x5EA6;,&#x91CD;&#x590D;&#x6B21;&#x6570;&#x3002;  </p>
+</blockquote>
+<ul>
+<li><p><em>beginTime</em> : &#x8BBE;&#x7F6E;&#x52A8;&#x753B;&#x7684;&#x5F00;&#x59CB;&#x65F6;&#x95F4;&#xFF0C;&#x7528;&#x6765;&#x5EF6;&#x8FDF;&#x52A8;&#x753B;&#x7684;&#x5F00;&#x59CB;&#x6267;&#x884C;&#x65F6;&#x95F4;&#xFF0C;&#x6BD4;&#x5982;&#x8BF4;&#xFF0C;&#x60F3;&#x5EF6;&#x8FDF;2s&#x624D;&#x5F00;&#x59CB;&#x6267;&#x884C;&#xFF0C;&#x8BBE;&#x7F6E;&#x4E3A;<code>CACurrentMediaTime() + 2</code>, CACurrentMediaTime()&#x8868;&#x793A;&#x5F53;&#x524D;&#x56FE;&#x5C42;&#x7684;&#x65F6;&#x95F4;; </p>
+</li>
+<li><p><em>duration</em> : &#x8BBE;&#x7F6E;&#x52A8;&#x753B;&#x6301;&#x7EED;&#x65F6;&#x95F4;;  </p>
+</li>
+<li><p><em>speed</em> : &#x8BBE;&#x7F6E;&#x52A8;&#x753B;&#x8FD0;&#x884C;&#x901F;&#x5EA6;&#xFF0C;speed&#x662F;&#x4E00;&#x4E2A;&#x901F;&#x5EA6;&#x500D;&#x589E;&#x5668;&#x3002;&#x9ED8;&#x8BA4;&#x8BE5;&#x5C5E;&#x6027;&#x7684;&#x503C;&#x4E3A;1.0&#xFF0C;&#x82E5;&#x8BE5;&#x503C;&#x8BBE;&#x4E3A;2.0&#x5C06;&#x4F1A;&#x5F15;&#x8D77;&#x52A8;&#x753B;&#x8FD0;&#x884C;&#x901F;&#x5EA6;&#x4E3A;&#x539F;&#x6765;&#x901F;&#x5EA6;&#x7684;&#x4E24;&#x500D;&#x3002;&#x8BE5;&#x5C5E;&#x6027;&#x7684;&#x56FE;&#x5C42;&#x4F1A;&#x5F71;&#x54CD;&#x5230;&#x56FE;&#x5C42;&#x7684;&#x5B50;&#x56FE;&#x5C42;&#xFF0C;&#x5982;&#x679C;&#x5B50;&#x56FE;&#x5C42;&#x548C;&#x7236;&#x56FE;&#x5C42;&#x90FD;&#x62E5;&#x6709;2.0&#x7684;&#x901F;&#x5EA6;&#xFF0C;&#x5219;&#x5B50;&#x56FE;&#x5C42;&#x7684;&#x901F;&#x5EA6;&#x5C06;&#x4F1A;&#x662F;&#x539F;&#x6765;&#x7684;4&#x500D;&#x3002;  </p>
+</li>
+<li><p><em>timeOffset</em> : &#x8BA9;&#x52A8;&#x753B;&#x4E00;&#x5F00;&#x59CB;&#x5C31;&#x51FA;&#x73B0;&#x5728;&#x539F;&#x672C;&#x662F;&#x5728;&#x67D0;&#x4E2A;&#x65F6;&#x523B;&#x624D;&#x4F1A;&#x51FA;&#x73B0;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x4F7F;&#x7528;&#x5728;&#x6682;&#x505C;&#x52A8;&#x753B;&#x548C;&#x5F00;&#x59CB;&#x52A8;&#x753B;&#x3002;&#xFF08;&#x6211;&#x7684;&#x7406;&#x89E3;&#x662F;&#x8BBE;&#x7F6E;&#x7A7F;&#x8D8A;&#x65F6;&#x95F4;)  </p>
+</li>
+<li><p><em>repeatCount</em> : &#x52A8;&#x753B;&#x91CD;&#x590D;&#x6B21;&#x6570;&#xFF0C;&#x65E0;&#x9650;&#x5FAA;&#x73AF;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x4E3A;HUGE_VALF&#x6216;&#x8005;MAXFLOAT  </p>
+</li>
+<li><p><em>repeatDuration</em> : &#x52A8;&#x753B;&#x91CD;&#x590D;&#x7684;&#x65F6;&#x95F4;&#x3002;</p>
+</li>
+<li><p><em>autoreverses</em> : BOOL &#x7C7B;&#x578B;&#xFF0C;&#x8BBE;&#x7F6E;&#x4E3A;YES&#x5C06;&#x5F15;&#x8D77;&#x52A8;&#x753B;&#x5728;&#x6307;&#x5B9A;&#x65F6;&#x95F4;&#x5185;&#x6267;&#x884C;&#x76F8;&#x53CD;&#x7684;&#x52A8;&#x753B;&#xFF0C;&#x4E0E;repeatcount&#x5C5E;&#x6027;&#x914D;&#x5408;&#x4F7F;&#x7528;&#xFF0C;&#x53EF;&#x6765;&#x56DE;&#x53CD;&#x590D;&#x6267;&#x884C;&#x52A8;&#x753B;&#x3002;</p>
+</li>
+<li><p><em>fillMode</em> : &#x8BBE;&#x7F6E;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x5728;&#x975E;active&#x65F6;&#x95F4;&#x7684;&#x884C;&#x4E3A;&#x3002;</p>
+<p>  <code>kCAFillModeRemoved</code>: fillMode&#x9ED8;&#x8BA4;&#x503C;&#xFF0C;&#x52A8;&#x753B;&#x5F00;&#x59CB;&#x524D;&#x559D;&#x52A8;&#x753B;&#x7ED3;&#x675F;&#x540E;&#xFF0C;&#x52A8;&#x753B;&#x5BF9;layer&#x6CA1;&#x6709;&#x5F71;&#x54CD;&#xFF0C;&#x52A8;&#x753B;&#x7ED3;&#x675F;&#x540E;&#xFF0C;layer&#x4F1A;&#x6062;&#x590D;&#x5230;&#x4E4B;&#x524D;&#x7684;&#x72B6;&#x6001;&#x3002;<br><img src="/2016/10/17/CoreAnimation/kCAFillModeRemoved.png" alt="kCAFillModeRemoved"><br>  <code>kCAFillModeBackwards</code>: &#x8BE5;fillMode&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x5728;&#x52A8;&#x753B;&#x5F00;&#x59CB;&#x524D;&#xFF0C;&#x56FE;&#x5C42;&#x5C06;&#x663E;&#x793A;&#x52A8;&#x753B;&#x7684;&#x5F00;&#x59CB;&#x503C;&#xFF0C;&#x5373;&#x4F7F;&#x5728;&#x56FE;&#x5C42;&#x6811;&#x4E2D;&#x7684;&#x56FE;&#x5C42;&#x5BF9;&#x8C61;&#x5305;&#x542B;&#x4E86;&#x4E00;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x503C;&#x3002;<br><img src="/2016/10/17/CoreAnimation/kCAFillModeBackwards.png" alt="kCAFillModeBackwards"><br>  <code>kCAFillModeForwards</code>: &#x8BE5;fillMode&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x5728;&#x52A8;&#x753B;&#x7ED3;&#x675F;&#x540E;&#xFF0C;&#x56FE;&#x5C42;&#x4F1A;&#x4E00;&#x76F4;&#x4FDD;&#x6301;&#x7740;&#x52A8;&#x753B;&#x6700;&#x540E;&#x7684;&#x72B6;&#x6001;&#x3002;<br><img src="/2016/10/17/CoreAnimation/kCAFillModeForwards.png" alt="kCAFillModeForwards"><br>  <code>kCAFillModeBoth</code>: &#x8BE5;fillMode&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x5C31;&#x662F;kCAFillModeBackwards&#x548C;kCAFillModeForwards&#x7684;&#x7EC4;&#x5408;&#x3002;<br><img src="/2016/10/17/CoreAnimation/kCAFillModeBoth.png" alt="kCAFillModeBoth"></p>
+</li>
+</ul>
+<h3 id="CAMediaTimingFunction&#x7C7B;"><a href="#CAMediaTimingFunction&#x7C7B;" class="headerlink" title="CAMediaTimingFunction&#x7C7B;"></a>CAMediaTimingFunction&#x7C7B;</h3><blockquote>
+<p>Core Animation&#x4F7F;&#x7528;&#x7F13;&#x51B2;&#x6765;&#x4F7F;&#x52A8;&#x753B;&#x79FB;&#x52A8;&#x66F4;&#x5E73;&#x6ED1;&#x66F4;&#x81EA;&#x7136;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x770B;&#x8D77;&#x6765;&#x7684;&#x90A3;&#x79CD;&#x975E;&#x5E38;&#x673A;&#x68B0;&#x7684;&#x6548;&#x679C;&#xFF0C;CAMediaTimingFunction&#x7C7B;&#x7ED9;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x4E86;&#x5BF9;&#x52A8;&#x753B;&#x548C;&#x81EA;&#x5B9A;&#x4E49;&#x7F13;&#x51B2;&#x66F2;&#x7EBF;&#x7684;&#x5904;&#x7406;&#x65B9;&#x6CD5;&#x4EE5;&#x53CA;&#x5C5E;&#x6027;&#x3002;</p>
+</blockquote>
+<ul>
+<li><p>CAMediaTimingFunction&#x7684;&#x65B9;&#x6CD5;:</p>
+<p>  &#x521B;&#x5EFA;CAMediaTimingFunction&#x7F13;&#x51B2;&#x66F2;&#x7EBF;&#x7684;&#x6784;&#x9020;&#x65B9;&#x6CD5;:</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+ (instancetype)functionWithName:(<span class="type">NSString</span> *)name;</div></pre></td></tr></table></figure>
+<pre><code>name: &#x53C2;&#x6570;&#x4F20;&#x5165;&#x6807;&#x51C6;&#x7684;CAMediaTimingFunction&#x7F13;&#x51B2;&#x66F2;&#x7EBF;&#x5E38;&#x91CF;
+</code></pre><p>  &#x81EA;&#x5B9A;&#x4E49;&#x7F13;&#x51B2;&#x51FD;&#x6570;&#x7684;&#x7C7B;&#x65B9;&#x6CD5;:</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+ (instancetype)functionWithControlPoints:(float)c1x :(float)c1y :(float)c2x :(float)c2y;</div></pre></td></tr></table></figure>
+<pre><code>c1x: 
+c1y:
+c2x:
+c2y:
+</code></pre><p>  &#x81EA;&#x5B9A;&#x4E49;&#x7F13;&#x51B2;&#x51FD;&#x6570;&#x7684;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;:</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (instancetype)initWithControlPoints:(float)c1x :(float)c1y :(float)c2x :(float)c2y;</div></pre></td></tr></table></figure>
+<pre><code>c1x:
+c1y:
+c2x:
+c2y: 
+</code></pre><p>  &#x68C0;&#x7D22;&#x66F2;&#x7EBF;&#x7684;&#x70B9;&#xFF0C;&#x7528;&#x9014;&#x662F;&#x9002;&#x7528;&#x5B83;&#x627E;&#x5230;&#x6807;&#x51C6;&#x7F13;&#x51B2;&#x51FD;&#x6570;&#x7684;&#x70B9;&#xFF0C;&#x7136;&#x540E;&#x4F7F;&#x7528;UIBezierPath&#x548C;CAShapeLayer&#x6765;&#x628A;&#x5B83;&#x753B;&#x51FA;&#x6765;&#x7684;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;:</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)getControlPointAtIndex:(size_t)idx values:(float[<span class="number">2</span>])ptr;</div></pre></td></tr></table></figure>
+</li>
+<li><p>&#x7CFB;&#x7EDF;&#x5B9A;&#x4E49;&#x597D;&#x7684;&#x6807;&#x51C6;CAMediaTimingFunction&#x7F13;&#x51B2;&#x66F2;&#x7EBF;&#x5E38;&#x91CF; :</p>
+<p>  <code>kCAMediaTimingFunctionLinear</code> : &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7EBF;&#x6027;&#x7684;&#x8BA1;&#x65F6;&#x51FD;&#x6570;&#xFF0C;CAAnimation&#x7684;timingFunction&#x5C5E;&#x6027;&#x7684;&#x9ED8;&#x8BA4;&#x51FD;&#x6570;&#xFF0C;&#x9002;&#x7528;&#x4E8E;&#x90A3;&#x4E9B;&#x7ACB;&#x5373;&#x52A0;&#x901F;&#x5E76;&#x4E14;&#x4FDD;&#x6301;&#x5300;&#x901F;&#x5230;&#x8FBE;&#x7EC8;&#x70B9;&#x7684;&#x573A;&#x666F;&#x3002;</p>
+<p>  <code>kCAMediaTimingFunctionEaseIn</code> : &#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;&#x6162;&#x6162;&#x52A0;&#x901F;&#x7136;&#x540E;&#x7A81;&#x7136;&#x505C;&#x6B62;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x9002;&#x7528;&#x4E8E;&#x81EA;&#x7531;&#x843D;&#x4F53;&#x7684;&#x573A;&#x666F;&#x3002;<br><img src="/2016/10/17/CoreAnimation/kCAMediaTimingFunctionEaseIn.png" alt="kCAMediaTimingFunctionEaseIn"></p>
+<p>  <code>kCAMediaTimingFunctionEaseOut</code> : &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x4EE5;&#x5168;&#x901F;&#x5F00;&#x59CB;&#xFF0C;&#x7136;&#x540E;&#x6162;&#x6162;&#x51CF;&#x901F;&#x76F4;&#x81F3;&#x505C;&#x6B62;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x9002;&#x7528;&#x4E8E;&#x51CF;&#x901F;&#x8FD0;&#x884C;&#x7684;&#x573A;&#x666F;&#x3002;<br><img src="/2016/10/17/CoreAnimation/kCAMediaTimingFunctionEaseOut.png" alt="kCAMediaTimingFunctionEaseOut"></p>
+<p>  <code>kCAMediaTimingFunctionEaseInEaseOut</code> : &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x6162;&#x6162;&#x52A0;&#x901F;&#x7136;&#x540E;&#x518D;&#x6162;&#x6162;&#x51CF;&#x901F;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x73B0;&#x5B9E;&#x4E16;&#x754C;&#x4E2D;&#x5927;&#x591A;&#x7269;&#x4F53;&#x79FB;&#x52A8;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x4E5F;&#x662F;&#x5927;&#x591A;&#x6570;&#x52A8;&#x753B;&#x6700;&#x597D;&#x7684;&#x9009;&#x62E9;&#x3002;UIView&#x7684;&#x52A8;&#x753B;&#x9ED8;&#x8BA4;&#x9009;&#x62E9;&#xFF0C;&#x4F46;&#x662F;&#x521B;&#x5EFA;CAAnimation&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9700;&#x8981;&#x624B;&#x52A8;&#x8BBE;&#x7F6E;&#x3002;<br><img src="/2016/10/17/CoreAnimation/kCAMediaTimingFunctionEaseInEaseOut.png" alt="kCAMediaTimingFunctionEaseInEaseOut"></p>
+<p>  <code>kCAMediaTimingFunctionDefault</code> : &#x548C;kCAMediaTimingFunctionEaseInEaseOut&#x7684;&#x6548;&#x679C;&#x975E;&#x5E38;&#x7C7B;&#x4F3C;&#xFF0C;&#x5C31;&#x662F;&#x52A0;&#x901F;&#x548C;&#x51CF;&#x901F;&#x8FC7;&#x7A0B;&#x4F1A;&#x6162;&#x4E00;&#x70B9;&#x3002;</p>
+</li>
+</ul>
+<h3 id="CAPropertyAnimation&#x7C7B;"><a href="#CAPropertyAnimation&#x7C7B;" class="headerlink" title="CAPropertyAnimation&#x7C7B;"></a>CAPropertyAnimation&#x7C7B;</h3><blockquote>
+<p>CAPropertyAnimation&#x7C7B;&#x662F;CoreAnimation&#x6846;&#x67B6;&#x4E2D;&#xFF0C;&#x5F88;&#x91CD;&#x8981;&#x7684;&#x7C7B;&#xFF0C;&#x7EE7;&#x627F;&#x4E86;CAAnimation&#xFF0C;&#x5B83;&#x6709;&#x4E24;&#x4E2A;&#x975E;&#x5E38;&#x5E38;&#x7528;&#x7684;&#x5B50;&#x7C7B;CABaseAnimation&#x548C;CAKeyFrameAnimation&#x3002;</p>
+</blockquote>
+<ul>
+<li><p>CAPropertyAnimation&#x7684;&#x5C5E;&#x6027;:<br>  <em>keyPath</em> : &#x8FD4;&#x56DE;&#x521B;&#x5EFA;CAPropertyAnimation&#x65F6;&#x6307;&#x5B9A;&#x7684;&#x52A8;&#x753B;&#x53C2;&#x6570;&#xFF1B;</p>
+<p>  <em>additive</em> : &#x6307;&#x5B9A;&#x8BE5;&#x5C5E;&#x6027;&#x52A8;&#x753B;&#x662F;&#x5426;&#x4EE5;&#x5F53;&#x524D;&#x52A8;&#x753B;&#x6548;&#x679C;&#x4E3A;&#x57FA;&#x7840;(&#x9ED8;&#x8BA4;&#x662F;NO)&#xFF1B;</p>
+<p>  <em>cumulative</em> : &#x6307;&#x5B9A;&#x52A8;&#x753B;&#x662F;&#x5426;&#x4E3A;&#x7D2F;&#x52A0;&#x6548;&#x679C;(&#x9ED8;&#x8BA4;&#x662F;NO)&#xFF1B;</p>
+<p>  <em>valueFunction</em> : &#x662F;&#x4E00;&#x4E2A;CAValueFunction&#x5BF9;&#x8C61;&#xFF0C;&#x8BE5;&#x5C5E;&#x6027;&#x8D1F;&#x8D23;&#x5BF9;&#x5C5E;&#x6027;&#x6539;&#x53D8;&#x7684;&#x63D2;&#x503C;&#x8BA1;&#x7B97;&#xFF0C;&#x7CFB;&#x7EDF;&#x5DF2;&#x7ECF;&#x63D0;&#x4F9B;&#x4E86;&#x9ED8;&#x8BA4;&#x7684;&#x63D2;&#x503C;&#x8BA1;&#x7B97;&#x65B9;&#x5F0F;&#xFF1B;</p>
+</li>
+<li><p>CAPropertyAnimation&#x7684;&#x65B9;&#x6CD5;:<br>  &#x8BE5;&#x65B9;&#x6CD5;&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x53C2;&#x6570;&#xFF0C;&#x6307;&#x5B9A;CALayer&#x7684;&#x52A8;&#x753B;&#x5C5E;&#x6027;&#x540D;&#xFF0C;&#x6307;&#x5B9A;&#x4E86;&#x54EA;&#x4E2A;&#x5C5E;&#x6027;&#x5C31;&#x63A7;&#x5236;&#x54EA;&#x4E2A;&#x5C5E;&#x6027;&#x6539;&#x53D8;&#x7684;&#x52A8;&#x753B;:</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+ (instancetype)animationWithKeyPath:(nullable <span class="type">NSString</span> *)path;</div></pre></td></tr></table></figure>
+<pre><code>path: &#x5B57;&#x7B26;&#x4E32;&#x53C2;&#x6570;,CALayer&#x7684;&#x53EF;&#x52A8;&#x753B;&#x5C5E;&#x6027;&#x3002;
+</code></pre></li>
+<li><p>&#x4E0B;&#x8868;&#x662F;CAPropertyAnimation&#x4EE5;&#x53CA;&#x5176;&#x5B50;&#x7C7B;&#x7684;&#x4E00;&#x4E9B;&#x7C7B;&#x578B;&#x8F6C;&#x6362;:</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Object Type</th>
+<th>Code Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CGFloat</td>
+<td>NSNumber</td>
+<td>id obj = @(float);</td>
+</tr>
+<tr>
+<td>CGPoint</td>
+<td>NSValue</td>
+<td>id obj = [NSValue valueWithCGPoint:point];</td>
+</tr>
+<tr>
+<td>CGSize</td>
+<td>NSValue</td>
+<td>id obj = [NSValue valueWithCGSize:size];</td>
+</tr>
+<tr>
+<td>CGRect</td>
+<td>NSValue</td>
+<td>id obj = [NSValue valueWithCGRect:rect];</td>
+</tr>
+<tr>
+<td>CATransform3D</td>
+<td>NSValue</td>
+<td>id obj = [NSValue valueWithCATransform3D: transform];</td>
+</tr>
+<tr>
+<td>CGImageRef</td>
+<td>id</td>
+<td>id obj = (__bridge id)imageRef;</td>
+</tr>
+<tr>
+<td>CGColorRef</td>
+<td>id</td>
+<td>id obj = (__bridge id)colorRef;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x4E0B;&#x8868;&#x662F;CALayer&#x7C7B;&#x7684;&#x53EF;&#x52A8;&#x753B;&#x5C5E;&#x6027;:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Default animation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>anchorPoint</td>
+<td>&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x9690;&#x5F0F;&#x7684;CABasicAnimation&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td>backgroundColor</td>
+<td>&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x9690;&#x5F0F;&#x7684;CABasicAnimation&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td>backgroundFilters</td>
+<td>&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x7684;CATransition&#x5BF9;&#x8C61;,&#x6EE4;&#x955C;&#x7684;&#x5B57;&#x5C5E;&#x6027;&#x88AB;&#x52A8;&#x753B;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x9690;&#x5F0F;CABasicAnimation&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x9690;&#x5F0F;&#x7684;CABasicAnimation&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x9690;&#x5F0F;&#x7684;CABasicAnimation&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td>bounds</td>
+<td>&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x9690;&#x5F0F;&#x7684;CABasicAnimation&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td>compositingFilter</td>
+<td>&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x7684;CATransition&#x5BF9;&#x8C61;,&#x6EE4;&#x955C;&#x7684;&#x5B57;&#x5C5E;&#x6027;&#x88AB;&#x52A8;&#x753B;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x9690;&#x5F0F;CABasicAnimation&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td>contents</td>
+<td>&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x9690;&#x5F0F;&#x7684;CABasicAnimation&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td>contentsRect</td>
+<td>&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x9690;&#x5F0F;&#x7684;CABasicAnimation&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td>cornerRadius</td>
+<td>&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x9690;&#x5F0F;&#x7684;CABasicAnimation&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td>doubleSided</td>
+<td>&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x9690;&#x5F0F;&#x7684;CABasicAnimation&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td>filters</td>
+<td>&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x7684;CATransition&#x5BF9;&#x8C61;,&#x6EE4;&#x955C;&#x7684;&#x5B57;&#x5C5E;&#x6027;&#x88AB;&#x52A8;&#x753B;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x9690;&#x5F0F;CABasicAnimation&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td>frame</td>
+<td>&#x8BE5;&#x5C5E;&#x6027;&#x662F;&#x4E0D;&#x53EF;&#x52A8;&#x753B;&#x7684;&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x52A8;&#x753B;bounds&#x548C;position&#x5C5E;&#x6027;&#x8FBE;&#x5230;&#x76F8;&#x540C;&#x7684;&#x6548;&#x679C;&#x3002;</td>
+</tr>
+<tr>
+<td>hidden</td>
+<td>&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x9690;&#x5F0F;&#x7684;CABasicAnimation&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td>mask</td>
+<td>&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x9690;&#x5F0F;&#x7684;CABasicAnimation&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td>masksToBounds</td>
+<td>&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x9690;&#x5F0F;&#x7684;CABasicAnimation&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td>opacity</td>
+<td>&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x9690;&#x5F0F;&#x7684;CABasicAnimation&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td>position</td>
+<td>&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x9690;&#x5F0F;&#x7684;CABasicAnimation&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td>shadowColor</td>
+<td>&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x9690;&#x5F0F;&#x7684;CABasicAnimation&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td>shadowOffset</td>
+<td>&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x9690;&#x5F0F;&#x7684;CABasicAnimation&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td>shadowOpacity</td>
+<td>&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x9690;&#x5F0F;&#x7684;CABasicAnimation&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td>shadowPath</td>
+<td>&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x9690;&#x5F0F;&#x7684;CABasicAnimation&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td>shadowRadius</td>
+<td>&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x9690;&#x5F0F;&#x7684;CABasicAnimation&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td>sublayers</td>
+<td>&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x9690;&#x5F0F;&#x7684;CABasicAnimation&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td>sublayerTransform</td>
+<td>&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x9690;&#x5F0F;&#x7684;CABasicAnimation&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td>transform</td>
+<td>&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x9690;&#x5F0F;&#x7684;CABasicAnimation&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td>zPosition</td>
+<td>&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x9690;&#x5F0F;&#x7684;CABasicAnimation&#x5BF9;&#x8C61;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="CAValuefunction&#x7C7B;"><a href="#CAValuefunction&#x7C7B;" class="headerlink" title="CAValuefunction&#x7C7B;:"></a>CAValuefunction&#x7C7B;:</h3><blockquote>
+<p>&#x8BA1;&#x7B97;&#x53D8;&#x6362;&#x77E9;&#x9635;&#x7684;&#x7C7B;&#xFF0C;&#x4F60;&#x4E0D;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8BBE;&#x7F6E;transform.rotation&#x6216;&#x8005;transform.scale&#xFF0C;&#x4ED6;&#x4EEC;&#x4E0D;&#x80FD;&#x88AB;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x3002;&#x5F53;&#x4F60;&#x5BF9;&#x4ED6;&#x4EEC;&#x505A;&#x52A8;&#x753B;&#x65F6;&#xFF0C;CoreAnimation&#x81EA;&#x52A8;&#x5730;&#x6839;&#x636E;&#x901A;&#x8FC7;CAValueFunction&#x6765;&#x8BA1;&#x7B97;&#x7684;&#x503C;&#x6765;&#x66F4;&#x65B0;transform&#x5C5E;&#x6027;&#x3002;</p>
+</blockquote>
+<ul>
+<li><p>CAValuefunction&#x7684;&#x5C5E;&#x6027;:<br>  <em>name</em> : &#x8BE5;&#x5C5E;&#x6027;&#x83B7;&#x53D6;&#x53D8;&#x6362;&#x77E9;&#x9635;&#x7684;&#x53C2;&#x6570;&#x540D;&#x3002;</p>
+</li>
+<li><p>CAValuefunction&#x7684;&#x65B9;&#x6CD5;:<br>  <code>+ (nullable instancetype)functionWithName:(NSString *)name;</code> : &#x6784;&#x9020;&#x65B9;&#x6CD5;&#xFF0C;&#x7528;&#x4E8E;&#x521B;&#x5EFA;CAValuefunction&#xFF3B;4*4&#xFF3D;&#x53D8;&#x6362;&#x77E9;&#x9635;&#x51FD;&#x6570;&#xFF0C;&#x4F20;&#x5165;&#x77E9;&#x9635;&#x53D8;&#x6362;&#x53C2;&#x6570;&#x540D;&#x3002;</p>
+</li>
+<li><p>CAValuefunction&#x53D8;&#x6362;&#x77E9;&#x9635;&#x8BA1;&#x7B97;&#x7684;&#x540D;&#x79F0;:</p>
+<ul>
+<li><p>&#x65CB;&#x8F6C;&#x53D8;&#x6362;:<br><code>kCAValueFunctionRotateX</code> : x&#x8F74;&#x65CB;&#x8F6C;;<br><code>kCAValueFunctionRotateY</code> : y&#x8F74;&#x65CB;&#x8F6C;;<br><code>kCAValueFunctionRotateZ</code> : z&#x8F74;&#x65CB;&#x8F6C;;</p>
+</li>
+<li><p>&#x7F29;&#x653E;&#x53D8;&#x6362;:<br><code>kCAValueFunctionScale</code> : &#x7F29;&#x653E;;</p>
+</li>
+<li><p>&#x77E9;&#x9635;&#x7F29;&#x653E;&#x53D8;&#x6362;:<br><code>kCAValueFunctionScaleX</code> : x&#x8F74;&#x7F29;&#x653E;;<br><code>kCAValueFunctionScaleY</code> : y&#x8F74;&#x7F29;&#x653E;;<br><code>kCAValueFunctionScaleZ</code> : z&#x8F74;&#x7F29;&#x653E;;</p>
+</li>
+<li><p>&#x53D8;&#x6362;:<br><code>kCAValueFunctionTranslate</code> : &#x53D8;&#x6362;;</p>
+</li>
+<li><p>&#x77E9;&#x9635;&#x53D8;&#x6362;:<br><code>kCAValueFunctionTranslateX</code> : x&#x8F74;&#x53D8;&#x6362;;<br><code>kCAValueFunctionTranslateY</code> : y&#x8F74;&#x53D8;&#x6362;;<br><code>kCAValueFunctionTranslateZ</code> : z&#x8F74;&#x53D8;&#x6362;;</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="CABasicAnimation&#x7C7B;"><a href="#CABasicAnimation&#x7C7B;" class="headerlink" title="CABasicAnimation&#x7C7B;:"></a>CABasicAnimation&#x7C7B;:</h3><blockquote>
+<p>&#x52A8;&#x753B;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x5185;&#x53D1;&#x751F;&#x7684;&#x6539;&#x53D8;&#xFF0C;&#x6700;&#x7B80;&#x5355;&#x7684;&#x5F62;&#x5F0F;&#x5C31;&#x662F;&#x4ECE;&#x4E00;&#x4E2A;&#x503C;&#x6539;&#x53D8;&#x5230;&#x53E6;&#x4E00;&#x4E2A;&#x503C;&#xFF0C;&#x8FD9;&#x4E5F;&#x662F;CABasicAnimation&#x6700;&#x4E3B;&#x8981;&#x7684;&#x529F;&#x80FD;&#x3002;CABasicAnimation&#x662F;CAPropertyAnimation&#x7684;&#x4E00;&#x4E2A;&#x5B50;&#x7C7B;&#x3002;</p>
+</blockquote>
+<ul>
+<li><p>CABasicAnimation&#x7684;&#x5C5E;&#x6027;:<br>  <code>fromValue</code> : &#x52A8;&#x753B;&#x5F00;&#x59CB;&#x4E4B;&#x524D;&#x5C5E;&#x6027;&#x7684;&#x503C;;</p>
+<p>  <code>toValue</code> : &#x52A8;&#x753B;&#x7ED3;&#x675F;&#x4E4B;&#x540E;&#x7684;&#x503C;;</p>
+<p>  <code>byValue</code> : &#x52A8;&#x753B;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#x6539;&#x53D8;&#x7684;&#x503C;;</p>
+<p>  <em>&#x2003;&#x2003;&#x901A;&#x8FC7;&#x7EC4;&#x5408;&#x8FD9;&#x4E09;&#x4E2A;&#x5C5E;&#x6027;&#x5C31;&#x53EF;&#x4EE5;&#x6709;&#x5F88;&#x591A;&#x79CD;&#x65B9;&#x5F0F;&#x6765;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x7684;&#x8FC7;&#x7A0B;&#x3002;&#x5B83;&#x4EEC;&#x88AB;&#x5B9A;&#x4E49;&#x6210;id&#x7C7B;&#x578B;&#x800C;&#x4E0D;&#x662F;&#x4E00;&#x4E9B;&#x5177;&#x4F53;&#x7684;&#x7C7B;&#x578B;&#x662F;&#x56E0;&#x4E3A;&#x5C5E;&#x6027;&#x52A8;&#x753B;&#x53EF;&#x4EE5;&#x7528;&#x4F5C;&#x5F88;&#x591A;&#x4E0D;&#x540C;&#x79CD;&#x7684;&#x5C5E;&#x6027;&#x7C7B;&#x578B;&#xFF0C;&#x5305;&#x62EC;&#x6570;&#x5B57;&#x7C7B;&#x578B;&#xFF0C;&#x77E2;&#x91CF;&#xFF0C;&#x53D8;&#x6362;&#x77E9;&#x9635;&#xFF0C;&#x751A;&#x81F3;&#x662F;&#x989C;&#x8272;&#x6216;&#x8005;&#x56FE;&#x7247;&#x3002;</em></p>
+<p>  <em>&#x2003;&#x2003;fromValue&#xFF0C;toValue&#x548C;byValue&#x5C5E;&#x6027;&#x53EF;&#x4EE5;&#x7528;&#x5F88;&#x591A;&#x79CD;&#x65B9;&#x5F0F;&#x6765;&#x7EC4;&#x5408;&#xFF0C;&#x4F46;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x51B2;&#x7A81;&#xFF0C;&#x4E0D;&#x80FD;&#x4E00;&#x6B21;&#x6027;&#x540C;&#x65F6;&#x6307;&#x5B9A;&#x8FD9;&#x4E09;&#x4E2A;&#x503C;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5982;&#x679C;&#x6307;&#x5B9A;&#x4E86;fromValue&#x7B49;&#x4E8E;2&#xFF0C;toValue&#x7B49;&#x4E8E;4&#xFF0C;byValue&#x7B49;&#x4E8E;3&#xFF0C;&#x90A3;&#x4E48;Core Animation&#x5C31;&#x4E0D;&#x77E5;&#x9053;&#x7ED3;&#x679C;&#x5230;&#x5E95;&#x662F;4&#xFF08;toValue&#xFF09;&#x8FD8;&#x662F;5&#xFF08;fromValue + byValue&#xFF09;&#x4E86;&#x3002;&#x4ED6;&#x4EEC;&#x7684;&#x7528;&#x6CD5;&#x5728;CABasicAnimation&#x5934;&#x6587;&#x4EF6;&#x4E2D;&#x5DF2;&#x7ECF;&#x63CF;&#x8FF0;&#x7684;&#x5F88;&#x6E05;&#x695A;&#x4E86;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x8FD9;&#x91CC;&#x5C31;&#x4E0D;&#x91CD;&#x590D;&#x4E86;&#x3002;&#x603B;&#x7684;&#x8BF4;&#x6765;&#xFF0C;&#x5C31;&#x662F;&#x53EA;&#x9700;&#x8981;&#x6307;&#x5B9A;toValue&#x6216;&#x8005;byValue&#xFF0C;&#x5269;&#x4E0B;&#x7684;&#x503C;&#x90FD;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4E0A;&#x4E0B;&#x6587;&#x81EA;&#x52A8;&#x8BA1;&#x7B97;&#x51FA;&#x6765;&#x3002;</em></p>
+<p>  <em>&#x2003;&#x2003;id&#x7C7B;&#x578B;&#x53EF;&#x4EE5;&#x5305;&#x542B;&#x4EFB;&#x610F;&#x7531;NSObject&#x6D3E;&#x751F;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x4F46;&#x662F;&#x6709;&#x65F6;&#x5019;&#x5E0C;&#x671B;&#x5BF9;&#x4E00;&#x4E9B;&#x4E0D;&#x76F4;&#x63A5;&#x4ECE;NSObject&#x7EE7;&#x627F;&#x7684;&#x5C5E;&#x6027;&#x7C7B;&#x578B;&#x505A;&#x52A8;&#x753B;&#xFF0C;&#x8FD9;&#x5C31;&#x9700;&#x8981;&#x628A;&#x8FD9;&#x4E9B;&#x503C;&#x7528;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x6765;&#x5C01;&#x88C5;&#x6216;&#x8005;&#x8F6C;&#x6210;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;</em></p>
+</li>
+</ul>
+<h3 id="CAKeyframeAnimation&#x7C7B;"><a href="#CAKeyframeAnimation&#x7C7B;" class="headerlink" title="CAKeyframeAnimation&#x7C7B;:"></a>CAKeyframeAnimation&#x7C7B;:</h3><blockquote>
+<p>CAKeyframeAnimation&#x540C;&#x6837;&#x662F;CAPropertyAnimation&#x7684;&#x4E00;&#x4E2A;&#x5B50;&#x7C7B;&#xFF0C;&#x5B83;&#x4F9D;&#x7136;&#x4F5C;&#x7528;&#x4E8E;&#x5355;&#x4E00;&#x7684;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x4F46;&#x662F;&#x548C;CABasicAnimation&#x4E0D;&#x4E00;&#x6837;&#x7684;&#x662F;&#xFF0C;&#x5B83;&#x4E0D;&#x9650;&#x5236;&#x4E8E;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x8D77;&#x59CB;&#x548C;&#x7ED3;&#x675F;&#x7684;&#x503C;&#xFF0C;&#x800C;&#x662F;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x4E00;&#x8FDE;&#x4E32;&#x968F;&#x610F;&#x7684;&#x503C;&#x6765;&#x505A;&#x52A8;&#x753B;&#x3002;</p>
+</blockquote>
+<ul>
+<li><p>CAKeyframeAnimation&#x7684;&#x5C5E;&#x6027;:<br>  <em>values</em> : &#x5B58;&#x653E;&#x4E00;&#x8FDE;&#x4E32;&#x5173;&#x952E;&#x5E27;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x52A8;&#x753B;&#x5BF9;&#x8C61;&#x4F1A;&#x5728;&#x6307;&#x5B9A;&#x65F6;&#x95F4;&#xFF08;duration&#xFF09;&#x5185;&#xFF0C;&#x4F9D;&#x6B21;&#x73B0;&#x5B9E;values&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x5173;&#x952E;&#x5E27;&#x3002;</p>
+<p>  <em>path</em> : &#x53EF;&#x4EE5;&#x5B58;&#x653E;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x6BD4;&#x5982;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;CGPathRef\CGMutablePathRef&#xFF0C;&#x8BA9;&#x5C42;&#x8DDF;&#x7740;&#x8DEF;&#x5F84;&#x79FB;&#x52A8;&#xFF0C;path&#x53EA;&#x5BF9;CALayer&#x7684;anchorPoint&#x548C;position&#x8D77;&#x4F5C;&#x7528;&#x3002;&#x5982;&#x679C;&#x8BBE;&#x7F6E;&#x4E86;path&#xFF0C;&#x90A3;&#x4E48;values&#x5C06;&#x88AB;&#x5FFD;&#x7565;&#x3002;</p>
+<p>  <em>keyTimes</em> : &#x53EF;&#x4EE5;&#x4E3A;&#x5BF9;&#x5E94;&#x7684;&#x5173;&#x952E;&#x5E27;&#x6307;&#x5B9A;&#x5BF9;&#x5E94;&#x7684;&#x65F6;&#x95F4;&#x70B9;&#xFF0C;&#x5176;&#x53D6;&#x503C;&#x8303;&#x56F4;&#x4E3A;0&#x5230;1.0&#xFF0C;keyTimes&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x503C;&#x90FD;&#x5BF9;&#x5E94;values&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x5E27;&#xFF0C;&#x5F53;keyTimes&#x6CA1;&#x6709;&#x8BBE;&#x7F6E;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5404;&#x5173;&#x952E;&#x5E27;&#x7684;&#x65F6;&#x95F4;&#x662F;&#x5E73;&#x5206;&#x7684;&#xFF0C;CABasicAnimation&#x53EF;&#x4EE5;&#x770B;&#x4F5C;&#x662F;&#x53EA;&#x6709;2&#x4E2A;&#x5173;&#x952E;&#x5E27;&#x7684;CAKeyframeAnimation&#x3002;</p>
+<p>  <em>timingFunctions</em> : &#x5B58;&#x653E;&#x7740;CAMediaTimingFunction&#x5BF9;&#x8C61;&#x7684;&#x6570;&#x7EC4;&#x3002;</p>
+<p>  <em>calculationMode</em> : &#x8BA1;&#x7B97;&#x6A21;&#x5F0F;&#xFF0C;&#x5176;&#x4E3B;&#x8981;&#x9488;&#x5BF9;&#x7684;&#x662F;&#x6BCF;&#x4E00;&#x5E27;&#x7684;&#x5185;&#x5BB9;&#x4E3A;&#x4E00;&#x4E2A;&#x5750;&#x6807;&#x70B9;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5BF9;anchorPoint&#x548C;position&#x8FDB;&#x884C;&#x7684;&#x52A8;&#x753B;&#x3002;&#x5F53;&#x5728;&#x5E73;&#x9762;&#x5750;&#x6807;&#x7CFB;&#x4E2D;&#x6709;&#x591A;&#x4E2A;&#x79BB;&#x6563;&#x7684;&#x70B9;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53EF;&#x4EE5;&#x662F;&#x79BB;&#x6563;&#x7684;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x76F4;&#x7EBF;&#x76F8;&#x8FDE;&#x540E;&#x8FDB;&#x884C;&#x63D2;&#x503C;&#x8BA1;&#x7B97;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5706;&#x6ED1;&#x7684;&#x66F2;&#x7EBF;&#x5C06;&#x4ED6;&#x4EEC;&#x76F8;&#x8FDE;&#x540E;&#x8FDB;&#x884C;&#x63D2;&#x503C;&#x8BA1;&#x7B97;&#x3002;<br>  &#x63D0;&#x4F9B;&#x7684;&#x51E0;&#x79CD;calculationMode:<br>  <code>kCAAnimationLinear</code> : &#x9ED8;&#x8BA4;&#x503C;&#xFF0C;&#x8868;&#x793A;&#x5F53;&#x5173;&#x952E;&#x5E27;&#x4E3A;&#x5750;&#x6807;&#x70B9;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5173;&#x952E;&#x5E27;&#x4E4B;&#x95F4;&#x76F4;&#x63A5;&#x76F4;&#x7EBF;&#x76F8;&#x8FDE;&#x8FDB;&#x884C;&#x63D2;&#x503C;&#x8BA1;&#x7B97;&#x3002;<br>  <code>kCAAnimationDiscrete</code> : &#x79BB;&#x6563;&#x7684;&#xFF0C;&#x5C31;&#x662F;&#x4E0D;&#x8FDB;&#x884C;&#x63D2;&#x503C;&#x8BA1;&#x7B97;&#xFF0C;&#x6240;&#x6709;&#x5173;&#x952E;&#x5E27;&#x76F4;&#x63A5;&#x9010;&#x4E2A;&#x8FDB;&#x884C;&#x663E;&#x793A;&#x3002;<br>  <code>kCAAnimationPaced</code> : &#x4F7F;&#x5F97;&#x52A8;&#x753B;&#x5747;&#x5300;&#x8FDB;&#x884C;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x6309;keyTimes&#x8BBE;&#x7F6E;&#x7684;&#x6216;&#x8005;&#x5173;&#x952E;&#x5E27;&#x5E73;&#x5206;&#x65F6;&#x95F4;&#xFF0C;&#x6B64;&#x65F6;keyTimes&#x548C;timingFunctions&#x65E0;&#x6548;&#x3002;<br>  <code>kCAAnimationCubic</code> : &#x5BF9;&#x5173;&#x952E;&#x5E27;&#x4E3A;&#x5750;&#x6807;&#x70B9;&#x7684;&#x5173;&#x952E;&#x5E27;&#x8FDB;&#x884C;&#x5706;&#x6ED1;&#x66F2;&#x7EBF;&#x76F8;&#x8FDE;&#x540E;&#x63D2;&#x503C;&#x8BA1;&#x7B97;&#xFF0C;&#x8FD9;&#x91CC;&#x4E3B;&#x8981;&#x76EE;&#x7684;&#x662F;&#x4F7F;&#x5F97;&#x8FD0;&#x884C;&#x7684;&#x8F68;&#x8FF9;&#x53D8;&#x5F97;&#x5706;&#x6ED1;&#x3002;<br>  <code>kCAAnimationCubicPaced</code> : &#x5728;KCAAnimationCubic&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x4F7F;&#x5F97;&#x52A8;&#x753B;&#x8FD0;&#x884C;&#x53D8;&#x5F97;&#x5747;&#x5300;&#xFF0C;&#x5C31;&#x662F;&#x7CFB;&#x7EDF;&#x65F6;&#x95F4;&#x5185;&#x8FD0;&#x52A8;&#x7684;&#x8DDD;&#x79BB;&#x76F8;&#x540C;&#xFF0C;&#x6B64;&#x65F6;keyTimes&#x4EE5;&#x53CA;timingFunction&#x4E5F;&#x662F;&#x65E0;&#x6548;&#x7684;&#x3002;</p>
+<p>  <em>tensionValues</em> : &#x63A7;&#x5236;&#x66F2;&#x7EBF;&#x7684;&#x201C;&#x7D27;&#x5BC6;&#x5EA6;&#x201D;&#x3002;&#x6B63;&#x503C;&#x66F4;&#x7D27;&#xFF0C;&#x8D1F;&#x503C;&#x66F4;&#x5706;&#x3002; </p>
+<p>  <em>continuityValues</em> : &#x63A7;&#x5236;&#x5982;&#x4F55;&#x8FDE;&#x63A5;&#x3002;&#x6B63;&#x503C;&#x5C16;&#x9510;&#x89D2;&#xFF0C;&#x8D1F;&#x503C;&#x53CD;&#x8F6C;&#x89D2;&#x3002;</p>
+<p>  <em>biasValues</em> : &#x63A7;&#x5236;&#x66F2;&#x7EBF;&#x53D1;&#x751F;&#x7684;&#x4F4D;&#x7F6E;&#x3002;&#x6B63;&#x503C;&#x5728;&#x79FB;&#x52A8;&#x66F2;&#x7EBF;&#x4E4B;&#x524D;&#x63A7;&#x5236;&#x70B9;&#xFF0C;&#x8D1F;&#x503C;&#x5728;&#x63A7;&#x5236;&#x70B9;&#x4E4B;&#x540E;&#x79FB;&#x52A8;&#x3002;</p>
+<p>  <em>rotationMode</em> : &#x662F;&#x5426;&#x6CBF;&#x8DEF;&#x5F84;&#x52A8;&#x753B;&#x5BF9;&#x8C61;&#x6216;&#x65CB;&#x8F6C;&#x4EE5;&#x5339;&#x914D;(&#x9ED8;&#x8BA4;&#x4E3A;nil);<br>  <code>kCAAnimationRotateAuto</code> : &#x8DEF;&#x5F84;&#x5207;&#x7EBF;&#xFF0C;&#x81EA;&#x52A8;&#x3002;<br>  <code>kCAAnimationRotateAutoReverse</code> : &#x8DEF;&#x5F84;&#x5207;&#x7EBF;&#xFF0C;&#x81EA;&#x52A8;&#x7FFB;&#x8F6C;&#x3002;</p>
+</li>
+</ul>
+<h3 id="CASpringAnimation&#x7C7B;"><a href="#CASpringAnimation&#x7C7B;" class="headerlink" title="CASpringAnimation&#x7C7B;:"></a>CASpringAnimation&#x7C7B;:</h3><blockquote>
+<p>CASpringAnimation&#x662F;&#x7EE7;&#x627F;&#x81EA;CABasicAnimation,&#x662F;iOS 9 &#x624D;&#x5F15;&#x5165;&#x70B9;&#x52A8;&#x753B;&#x7C7B;&#xFF0C;&#x7528;&#x4E8E;&#x5236;&#x4F5C;&#x5F39;&#x7C27;&#x52A8;&#x753B;&#x3002;</p>
+</blockquote>
+<ul>
+<li><p>CASpringAnimation&#x7684;&#x5C5E;&#x6027;:<br>  <em>mass</em> : &#x8D28;&#x91CF;&#xFF0C;&#x5F71;&#x54CD;&#x56FE;&#x5C42;&#x8FD0;&#x52A8;&#x65F6;&#x7684;&#x5F39;&#x7C27;&#x60EF;&#x6027;&#xFF0C;&#x8D28;&#x91CF;&#x8D8A;&#x5927;&#xFF0C;&#x5F39;&#x7C27;&#x62C9;&#x4F38;&#x548C;&#x538B;&#x7F29;&#x7684;&#x5E45;&#x5EA6;&#x8D8A;&#x5927;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;1 &#x5FC5;&#x987B;&#x5927;&#x4E8E;0&#x3002;</p>
+<p>  <em>stiffness</em> : &#x521A;&#x5EA6;&#x7CFB;&#x6570;&#xFF08;&#x52B2;&#x5EA6;&#x7CFB;&#x6570;&#xFF0F;&#x5F39;&#x6027;&#x7CFB;&#x6570;&#xFF09;&#xFF0C;&#x521A;&#x5EA6;&#x7CFB;&#x6570;&#x8D8A;&#x5927;&#xFF0C;&#x5F62;&#x53D8;&#x4EA7;&#x751F;&#x7684;&#x529B;&#x5C31;&#x8D8A;&#x5927;&#xFF0C;&#x8FD0;&#x52A8;&#x8D8A;&#x5FEB;&#xFF0C;&#x5FC5;&#x987B;&#x5927;&#x4E8E;0  &#x9ED8;&#x8BA4;&#x662F;100&#x3002;</p>
+<p>  <em>damping</em> : &#x963B;&#x5C3C;&#x7CFB;&#x6570;&#xFF0C;&#x9632;&#x6B62;&#x5F39;&#x7C27;&#x4F38;&#x7F29;&#x7684;&#x7CFB;&#x6570;&#xFF0C;&#x963B;&#x5C3C;&#x7CFB;&#x6570;&#x8D8A;&#x5927;&#xFF0C;&#x505C;&#x6B62;&#x8D8A;&#x5FEB;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;10 &#x5FC5;&#x987B;&#x5927;&#x4E8E;&#x6216;&#x8005;&#x7B49;&#x4E8E;0&#x3002;</p>
+<p>  <em>initialVelocity</em> : &#x521D;&#x59CB;&#x901F;&#x7387;&#xFF0C;&#x52A8;&#x753B;&#x89C6;&#x56FE;&#x7684;&#x521D;&#x59CB;&#x901F;&#x5EA6;&#x5927;&#x5C0F;&#xFF0C;&#x901F;&#x7387;&#x4E3A;&#x6B63;&#x6570;&#x65F6;&#xFF0C;&#x901F;&#x5EA6;&#x65B9;&#x5411;&#x4E0E;&#x8FD0;&#x52A8;&#x65B9;&#x5411;&#x4E00;&#x81F4;&#xFF0C;&#x901F;&#x7387;&#x4E3A;&#x8D1F;&#x6570;&#x65F6;&#xFF0C;&#x901F;&#x5EA6;&#x65B9;&#x5411;&#x4E0E;&#x8FD0;&#x52A8;&#x65B9;&#x5411;&#x76F8;&#x53CD;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;0&#x3002;</p>
+<p>  <em>settlingDuration</em> : &#x7ED3;&#x7B97;&#x65F6;&#x95F4;&#xFF0C;&#x8FD4;&#x56DE;&#x5F39;&#x7C27;&#x52A8;&#x753B;&#x5230;&#x505C;&#x6B62;&#x65F6;&#x7684;&#x4F30;&#x7B97;&#x65F6;&#x95F4;&#xFF0C;&#x6839;&#x636E;&#x5F53;&#x524D;&#x7684;&#x52A8;&#x753B;&#x53C2;&#x6570;&#x4F30;&#x7B97;&#xFF0C;&#x901A;&#x5E38;&#x5F39;&#x7C27;&#x52A8;&#x753B;&#x7684;&#x65F6;&#x95F4;&#x4F7F;&#x7528;&#x7ED3;&#x7B97;&#x65F6;&#x95F4;&#x6BD4;&#x8F83;&#x51C6;&#x786E;</p>
+</li>
+</ul>
+<h3 id="CATransition&#x7C7B;"><a href="#CATransition&#x7C7B;" class="headerlink" title="CATransition&#x7C7B;:"></a>CATransition&#x7C7B;:</h3><blockquote>
+<p>CATransition&#x662F;CAAnimation&#x7684;&#x5B50;&#x7C7B;&#xFF0C;&#x7528;&#x4E8E;&#x505A;&#x8F6C;&#x573A;&#x52A8;&#x753B;&#xFF0C;&#x80FD;&#x591F;&#x4E3A;&#x5C42;&#x63D0;&#x4F9B;&#x79FB;&#x51FA;&#x5C4F;&#x5E55;&#x548C;&#x79FB;&#x5165;&#x5C4F;&#x5E55;&#x7684;&#x52A8;&#x753B;&#x6548;&#x679C;&#x3002;UINavigationController&#x5C31;&#x662F;&#x901A;&#x8FC7;CATransition&#x5B9E;&#x73B0;&#x4E86;&#x5C06;&#x63A7;&#x5236;&#x5668;&#x7684;&#x89C6;&#x56FE;&#x63A8;&#x5165;&#x5C4F;&#x5E55;&#x7684;&#x52A8;&#x753B;&#x6548;&#x679C;&#x3002;</p>
+</blockquote>
+<ul>
+<li><p>CATransition&#x7684;&#x5C5E;&#x6027;:<br>  <em>type</em> : &#x52A8;&#x753B;&#x8FC7;&#x6E21;&#x7C7B;&#x578B;&#x3002;</p>
+<p>  <em>subtype</em> : &#x52A8;&#x753B;&#x8FC7;&#x6E21;&#x65B9;&#x5411;&#x3002;</p>
+<p>  <em>startProgress</em> : &#x52A8;&#x753B;&#x8D77;&#x70B9;&#xFF0C;&#x5728;&#x6574;&#x4E2A;&#x52A8;&#x753B;&#x7684;&#x767E;&#x5206;&#x6BD4;&#x3002;</p>
+<p>  <em>endProgress</em> : &#x52A8;&#x753B;&#x7684;&#x7EC8;&#x70B9;&#xFF0C;&#x5728;&#x6574;&#x4E2A;&#x52A8;&#x753B;&#x7684;&#x767E;&#x5206;&#x6BD4;&#x3002;</p>
+<p>  <em>filter</em> : &#x8F6C;&#x573A;&#x52A8;&#x753B;&#x8FC7;&#x6EE4;&#x5668;&#x3002;</p>
+</li>
+<li><p>&#x666E;&#x901A;&#x7684;&#x8F6C;&#x573A;&#x52A8;&#x753B;&#x6548;&#x679C;:<br>  <code>kCATransitionFade</code> : &#x9010;&#x6E10;&#x6D88;&#x5931;&#x3002;<br>  <code>kCATransitionMoveIn</code> : &#x79FB;&#x5165;&#x3002;<br>  <code>kCATransitionPush</code> : &#x5E73;&#x79FB;&#x3002;<br>  <code>kCATransitionReveal</code> : &#x663E;&#x9732;&#x3002;<br>  <code>kCATransitionFromRight</code> : &#x5F80;&#x53F3;&#x3002;<br>  <code>kCATransitionFromLeft</code> : &#x5F80;&#x5DE6;&#x3002;<br>  <code>kCATransitionFromTop</code> : &#x5411;&#x4E0A;&#x3002;<br>  <code>kCATransitionFromBottom</code> : &#x5411;&#x4E0B;&#x3002;</p>
+</li>
+<li><p>&#x4E0B;&#x8868;&#x5217;&#x51FA;&#x8F6C;&#x573A;&#x52A8;&#x753B;&#x8FC7;&#x6E21;&#x6548;&#x679C;:</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x7C7B;&#x578B;&#x5B57;&#x7B26;&#x4E32;</th>
+<th>&#x6548;&#x679C;&#x8BF4;&#x660E;</th>
+<th>&#x5173;&#x952E;&#x5B57;</th>
+<th>&#x65B9;&#x5411;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fade</td>
+<td>&#x4EA4;&#x53C9;&#x6DE1;&#x5316;&#x8FC7;&#x6E21;</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>push</td>
+<td>&#x65B0;&#x89C6;&#x56FE;&#x628A;&#x65E7;&#x89C6;&#x56FE;&#x63A8;&#x51FA;&#x53BB;</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>moveIn</td>
+<td>&#x65B0;&#x89C6;&#x56FE;&#x79FB;&#x5230;&#x65E7;&#x89C6;&#x56FE;&#x4E0A;&#x9762;</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>reveal</td>
+<td>&#x5C06;&#x65E7;&#x89C6;&#x56FE;&#x79FB;&#x5F00;,&#x663E;&#x793A;&#x4E0B;&#x9762;&#x7684;&#x65B0;&#x89C6;&#x56FE;</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>cube</td>
+<td>&#x7ACB;&#x65B9;&#x4F53;&#x7FFB;&#x6EDA;&#x6548;&#x679C;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>oglFlip</td>
+<td>&#x4E0A;&#x4E0B;&#x5DE6;&#x53F3;&#x7FFB;&#x6EDA;&#x6548;&#x679C;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>suckEffect</td>
+<td>&#x6536;&#x7F29;&#x6548;&#x679C;,&#x5982;&#x4E00;&#x5757;&#x5E03;&#x88AB;&#x62BD;&#x8D70;</td>
+<td></td>
+<td>NO</td>
+</tr>
+<tr>
+<td>rippleEffect</td>
+<td>&#x6C34;&#x6EF4;&#x6548;&#x679C;</td>
+<td></td>
+<td>NO</td>
+</tr>
+<tr>
+<td>pageCurl</td>
+<td>&#x5411;&#x4E0A;&#x7FFB;&#x9875;&#x6548;&#x679C;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>pageUnCurl</td>
+<td>&#x5411;&#x4E0B;&#x7FFB;&#x9875;&#x6548;&#x679C;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>cameraIrisHollwOpen</td>
+<td>&#x76F8;&#x673A;&#x955C;&#x5934;&#x6253;&#x5F00;&#x6548;&#x679C;</td>
+<td></td>
+<td>NO</td>
+</tr>
+<tr>
+<td>cameraIrisHollwClose</td>
+<td>&#x76F8;&#x673A;&#x955C;&#x5934;&#x5173;&#x95ED;&#x6548;&#x679C;</td>
+<td></td>
+<td>NO</td>
+</tr>
+</tbody>
+</table>
+<h3 id="CAAnimationGroup&#x7C7B;"><a href="#CAAnimationGroup&#x7C7B;" class="headerlink" title="CAAnimationGroup&#x7C7B;"></a>CAAnimationGroup&#x7C7B;</h3><blockquote>
+<p>CAAnimationGroup&#x4E5F;&#x662F;&#x7EE7;&#x627F;&#x81EA;CAAnimation&#x7684; &#xFF0C;CAAnimationGroup&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x5C31;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;.</p>
+</blockquote>
+<ul>
+<li>CAAnimationGroup&#x7684;&#x5C5E;&#x6027;:<br>  <code>animations</code> : &#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x662F;&#x5143;&#x7D20;&#x53EA;&#x80FD;&#x662F;CAAnimation&#x7C7B;&#x6216;&#x8005;&#x5176;&#x5B50;&#x7C7B;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x7EC4;&#x52A8;&#x753B;&#x662F;&#x5F88;&#x7B80;&#x5355;&#x7684;&#x52A8;&#x753B;&#xFF0C;&#x4ED6;&#x53EA;&#x662F;&#x628A;&#x5176;&#x4ED6;&#x7684;&#x52A8;&#x753B;&#x7EC4;&#x5408;&#x8D77;&#x6765;&#x3002;</li>
+</ul>
+<h2 id="&#x7B2C;&#x4E09;&#x6B65;"><a href="#&#x7B2C;&#x4E09;&#x6B65;" class="headerlink" title="&#x7B2C;&#x4E09;&#x6B65;"></a>&#x7B2C;&#x4E09;&#x6B65;</h2><p>&#x2003;&#x2003;&#x6700;&#x540E;&#x4E0D;&#x5355;&#x5355;&#x662F;&#x6211;&#x8BA4;&#x4E3A;&#xFF0C;&#x51E0;&#x4E4E;&#x4E16;&#x754C;&#x4E0A;&#x6240;&#x6709;&#x4EBA;&#x90FD;&#x8FD9;&#x6837;&#x8BA4;&#x4E3A;&#xFF0D;&#xFF0D;&#x5B9E;&#x8DF5;&#x662F;&#x68C0;&#x9A8C;&#x771F;&#x7406;&#x7684;&#x552F;&#x4E00;&#x6807;&#x51C6;&#xFF01;&#xFF01;&#xFF01;&#x5957;&#x7528;&#x795E;&#x7684;&#x4E00;&#x53E5;&#x8BDD;:<br><blockquote><p>Talk is cheap show me the code!</p>
+<footer><strong>- - Linus Benedict Torvalds</strong></footer></blockquote></p>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://yoursite.com/2016/10/17/CoreAnimation/" data-id="ciug82n7r0002guyxzpcrw41i" class="article-share-link">分享到</a><div class="tags"><a href="/tags/CoreAnimation/">CoreAnimation</a></div><div class="post-nav"><a href="/2016/09/22/Some-Swift3-Problem/" class="next">Swift3爬坑纪录!</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/CoreAnimation/" style="font-size: 15px;">CoreAnimation</a> <a href="/tags/swift3/" style="font-size: 15px;">swift3</a> <a href="/tags/xCode8/" style="font-size: 15px;">xCode8</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/10/17/CoreAnimation/">《Core Animation》的点点滴滴</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/22/Some-Swift3-Problem/">Swift3爬坑纪录!</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/20/A-good-Commit-Message/">如何写好一个优雅的提交信息？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/11/hello-world/">Hello World</a></li></ul></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">Lee.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
