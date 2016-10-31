@@ -2,7 +2,7 @@
     So you like the style of impress.js demo?
     Or maybe you are just curious how it was done?
 
-    You couldn't find a better place to find out!
+    You couldn&apos;t find a better place to find out!
 
     Welcome to the stylesheet impress.js demo presentation.
 
@@ -21,11 +21,11 @@
 
 
 /*
-    We start with a good ol' reset.
-    That's the one by Eric Meyer http://meyerweb.com/eric/tools/css/reset/
+    We start with a good ol&apos; reset.
+    That&apos;s the one by Eric Meyer http://meyerweb.com/eric/tools/css/reset/
 
     You can probably argue if it is needed here, or not, but for sure it
-    doesn't do any harm and gives us a fresh start.
+    doesn&apos;t do any harm and gives us a fresh start.
 */
 
 html, body, div, span, applet, object, iframe,
@@ -65,7 +65,7 @@ blockquote, q {
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
-    content: '';
+    content: &apos;&apos;;
     content: none;
 }
 
@@ -78,11 +78,11 @@ table {
     Now here is when interesting things start to appear.
 
     We set up <body> styles with default font and nice gradient in the background.
-    And yes, there is a lot of repetition there because of -prefixes but we don't
+    And yes, there is a lot of repetition there because of -prefixes but we don&apos;t
     want to leave anybody behind.
 */
 body {
-    font-family: 'PT Sans', sans-serif;
+    font-family: &apos;PT Sans&apos;, sans-serif;
     min-height: 740px;
 
     background: rgb(215, 215, 215);
@@ -95,7 +95,7 @@ body {
 }
 
 /*
-    Now let's bring some text styles back ...
+    Now let&apos;s bring some text styles back ...
 */
 b, strong { font-weight: bold }
 i, em { font-style: italic }
@@ -126,12 +126,12 @@ a:focus {
 
 /*
     Because the main point behind the impress.js demo is to demo impress.js
-    we display a fallback message for users with browsers that don't support
+    we display a fallback message for users with browsers that don&apos;t support
     all the features required by it.
 
     All of the content will be still fully accessible for them, but I want
-    them to know that they are missing something - that's what the demo is
-    about, isn't it?
+    them to know that they are missing something - that&apos;s what the demo is
+    about, isn&apos;t it?
 
     And then we hide the message, when support is detected in the browser.
 */
@@ -158,7 +158,7 @@ a:focus {
 }
 
 /*
-    Now let's style the presentation steps.
+    Now let&apos;s style the presentation steps.
 
     We start with basics to make sure it displays correctly in everywhere ...
 */
@@ -175,7 +175,7 @@ a:focus {
     -o-box-sizing:      border-box;
     box-sizing:         border-box;
 
-    font-family: 'PT Serif', georgia, serif;
+    font-family: &apos;PT Serif&apos;, georgia, serif;
     font-size: 48px;
     line-height: 1.5;
 }
@@ -199,7 +199,7 @@ a:focus {
 .impress-enabled .step.active { opacity: 1 }
 
 /*
-    These 'slide' step styles were heavily inspired by HTML5 Slides:
+    These &apos;slide&apos; step styles were heavily inspired by HTML5 Slides:
     http://html5slides.googlecode.com/svn/trunk/styles.css
 
     ;)
@@ -221,7 +221,7 @@ a:focus {
     color: rgb(102, 102, 102);
     text-shadow: 0 2px 2px rgba(0, 0, 0, .1);
 
-    font-family: 'Open Sans', Arial, sans-serif;
+    font-family: &apos;Open Sans&apos;, Arial, sans-serif;
     font-size: 30px;
     line-height: 36px;
     letter-spacing: -1px;
@@ -282,10 +282,10 @@ a:focus {
 }
 
 /*
-    Second step is nothing special, just a text with a link, so it doesn't need
+    Second step is nothing special, just a text with a link, so it doesn&apos;t need
     any special styling.
 
-    Let's move to 'big thoughts' with centered text and custom font sizes.
+    Let&apos;s move to &apos;big thoughts&apos; with centered text and custom font sizes.
 */
 
 #welcome {
@@ -511,7 +511,7 @@ a:focus {
 }
 
 /*
-    'Tiny ideas' just need some tiny styling.
+    &apos;Tiny ideas&apos; just need some tiny styling.
 */
 #tiny {
     width: 500px;
@@ -537,7 +537,7 @@ a:focus {
 }
 
 /*
-    ... and we want 'positioning` word to move up a bit when the step gets
+    ... and we want &apos;positioning` word to move up a bit when the step gets
     `present` class ...
 */
 #ing.present .positioning {
@@ -549,7 +549,7 @@ a:focus {
 }
 
 /*
-    ... 'rotating' to rotate a quarter of a second later ...
+    ... &apos;rotating&apos; to rotate a quarter of a second later ...
 */
 #ing.present .rotating {
     -webkit-transform: rotate(-10deg);
@@ -566,7 +566,7 @@ a:focus {
 }
 
 /*
-    ... and 'scaling' to scale down after another quarter of a second.
+    ... and &apos;scaling&apos; to scale down after another quarter of a second.
 */
 #ing.present .scaling {
     -webkit-transform: scale(0.7);
@@ -583,7 +583,7 @@ a:focus {
 }
 
 /*
-    The 'imagination' step is again some boring font-sizing.
+    The &apos;imagination&apos; step is again some boring font-sizing.
 */
 
 #imagination {
@@ -595,14 +595,14 @@ a:focus {
 }
 
 /*
-    There is nothing really special about 'use the source, Luke' step, too,
+    There is nothing really special about &apos;use the source, Luke&apos; step, too,
     except maybe of the Yoda background.
 
-    As you can see below I've 'hard-coded' it in data URL.
-    That's not the best way to serve images, but because that's just this one
+    As you can see below I&apos;ve &apos;hard-coded&apos; it in data URL.
+    That&apos;s not the best way to serve images, but because that&apos;s just this one
     I decided it will be OK to have it this way.
 
-    Just make sure you don't blindly copy this approach.
+    Just make sure you don&apos;t blindly copy this approach.
 */
 #source {
     width: 700px;
@@ -619,11 +619,11 @@ a:focus {
 }
 
 /*
-    And the "it's in 3D" step again brings some 3D typography - just for fun.
+    And the &quot;it&apos;s in 3D&quot; step again brings some 3D typography - just for fun.
 
     Because we want to position <span> elements in 3D we set transform-style to
     `preserve-3d` on the paragraph.
-    It is not needed by webkit browsers, but it is in Firefox. It's hard to say
+    It is not needed by webkit browsers, but it is in Firefox. It&apos;s hard to say
     which behaviour is correct as 3D transforms spec is not very clear about it.
 */
 #its-in-3d p {
@@ -638,7 +638,7 @@ a:focus {
     Below we position each word separately along Z axis and we want it to transition
     to default position in 0.5s when the step gets `present` class.
 
-    Quite a simple idea, but lot's of styles and prefixes.
+    Quite a simple idea, but lot&apos;s of styles and prefixes.
 */
 #its-in-3d span,
 #its-in-3d b {
@@ -717,7 +717,7 @@ a:focus {
 
 /*
     The last step is an overview.
-    There is no content in it, so we make sure it's not visible because we want
+    There is no content in it, so we make sure it&apos;s not visible because we want
     to be able to click on other steps.
 
 */
@@ -734,7 +734,7 @@ a:focus {
 
 
 /*
-    Now, when we have all the steps styled let's give users a hint how to navigate
+    Now, when we have all the steps styled let&apos;s give users a hint how to navigate
     around the presentation.
 
     The best way to do this would be to use JavaScript, show a delayed hint for a
@@ -746,11 +746,11 @@ a:focus {
     when you read the code.
 
     First of all I wanted the hint to appear only when user is idle for a while.
-    You can't detect the 'idle' state in CSS, but I delayed a appearing of the
+    You can&apos;t detect the &apos;idle&apos; state in CSS, but I delayed a appearing of the
     hint by 5s using transition-delay.
 
-    You also can't detect in CSS if the user is a first-time visitor, so I had to
-    make an assumption that I'll only show the hint on the first step. And when
+    You also can&apos;t detect in CSS if the user is a first-time visitor, so I had to
+    make an assumption that I&apos;ll only show the hint on the first step. And when
     the step is changed hide the hint, because I can assume that user already
     knows how to navigate.
 
@@ -760,14 +760,14 @@ a:focus {
     The other problem I had was caused by the fact that I wanted the hint to fade
     in and out. It can be easily achieved by transitioning the opacity property.
     But that also meant that the hint was always on the screen, even if totally
-    transparent. It covered part of the screen and you couldn't correctly clicked
+    transparent. It covered part of the screen and you couldn&apos;t correctly clicked
     through it.
     Unfortunately you cannot transition between display `block` and `none` in pure
     CSS, so I needed a way to not only fade out the hint but also move it out of
     the screen.
 
     I solved this problem by positioning the hint below the bottom of the screen
-    with CSS transform and moving it up to show it. But I also didn't want this move
+    with CSS transform and moving it up to show it. But I also didn&apos;t want this move
     to be visible. I wanted the hint only to fade in and out visually, so I delayed
     the fade in transition, so it starts when the hint is already in its correct
     position on the screen.
@@ -800,12 +800,12 @@ a:focus {
     z-index: 100;
 
     /*
-        By default we don't want the hint to be visible, so we make it transparent ...
+        By default we don&apos;t want the hint to be visible, so we make it transparent ...
     */
     opacity: 0;
 
     /*
-        ... and position it below the bottom of the screen (relative to it's fixed position)
+        ... and position it below the bottom of the screen (relative to it&apos;s fixed position)
     */
     -webkit-transform: translateY(400px);
     -moz-transform:    translateY(400px);
@@ -814,7 +814,7 @@ a:focus {
     transform:         translateY(400px);
 
     /*
-        Now let's imagine that the hint is visible and we want to fade it out and move out
+        Now let&apos;s imagine that the hint is visible and we want to fade it out and move out
         of the screen.
 
         So we define the transition on the opacity property with 1s duration and another
@@ -831,12 +831,12 @@ a:focus {
 }
 
 /*
-    Now we 'enable' the hint when presentation is initialized ...
+    Now we &apos;enable&apos; the hint when presentation is initialized ...
 */
 .impress-enabled .hint { display: block }
 
 /*
-    ... and we will show it when the first step (with id 'bored') is active.
+    ... and we will show it when the first step (with id &apos;bored&apos;) is active.
 */
 .impress-on-welcome .hint {
     /*
@@ -868,10 +868,10 @@ a:focus {
 
 /*
     And as the last thing there is a workaround for quite strange bug.
-    It happens a lot in Chrome. I don't remember if I've seen it in Firefox.
+    It happens a lot in Chrome. I don&apos;t remember if I&apos;ve seen it in Firefox.
 
-    Sometimes the element positioned in 3D (especially when it's moved back
-    along Z axis) is not clickable, because it falls 'behind' the <body>
+    Sometimes the element positioned in 3D (especially when it&apos;s moved back
+    along Z axis) is not clickable, because it falls &apos;behind&apos; the <body>
     element.
 
     To prevent this, I decided to make <body> non clickable by setting
@@ -883,9 +883,9 @@ a:focus {
     https://developer.mozilla.org/en/CSS/pointer-events
 
     There is one very important thing to notice about this workaround - it makes
-    everything 'unclickable' except what's in #impress element.
+    everything &apos;unclickable&apos; except what&apos;s in #impress element.
 
-    So use it wisely ... or don't use at all.
+    So use it wisely ... or don&apos;t use at all.
 */
 .impress-enabled          { pointer-events: none }
 .impress-enabled #impress { pointer-events: auto }
@@ -898,11 +898,12 @@ a:focus {
     So basically all of this transforms and delayed transitions trickery was probably
     not needed at all...
 
-    But it was fun to learn about it, wasn't it?
+    But it was fun to learn about it, wasn&apos;t it?
 */
 
 /*
-    That's all I have for you in this file.
+    That&apos;s all I have for you in this file.
     Thanks for reading. I hope you enjoyed it at least as much as I enjoyed writing it
     for you.
 */
+</body></body></span></h1></body>
